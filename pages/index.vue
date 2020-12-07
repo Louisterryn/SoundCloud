@@ -1,10 +1,12 @@
 <template>
   <div>
-    <favoris v-show="favorisOn" :testArray="testArray" />
+    <favoris v-show="favorisOn" :selectedMusique="selectedMusique" />
     <div v-for="(musique, index) in musiques" :key="index">
       {{ musique.titre }}
       {{ musique.son }}
-      <button @click="getFavoris(index)">favoris</button>
+      <button v-show="musique.test" @click="getFavoris(index)">
+        favoris
+      </button>
     </div>
   </div>
 </template>
@@ -18,23 +20,22 @@ export default {
   data() {
     return {
       favorisOn: false,
-      selectedMusique: "",
-      testArray: [""],
+      selectedMusique: [],
       musiques: [
         {
           titre: "cc",
           son: "tt",
-          test: "false"
+          test: "true"
         },
         {
           titre: "test1",
           son: "test1",
-          test: "false"
+          test: "true"
         },
         {
           titre: "test2",
           son: "test2",
-          test: "false"
+          test: "true"
         }
       ]
     };
@@ -42,9 +43,9 @@ export default {
   methods: {
     getFavoris(index) {
       this.favorisOn = true;
-      this.selectedMusique = this.musiques[index];
-
-      this.testArray.push(this.selectedMusique);
+      this.musiques[index].test = false;
+      this.selectedMusique.push(this.musiques[index]);
+      console.log(this.musiques[index].test);
     }
   }
 };
