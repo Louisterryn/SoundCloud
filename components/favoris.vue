@@ -1,11 +1,7 @@
 <template>
   <div>
     <div v-for="musique in selectedMusique">
-      {{ musique.titre }}
-      {{ musique.son }}
-      <button @click="deleteFavoris(index)">
-        supp
-      </button>
+      Titre : {{ musique.titre }} Son :{{ musique.son }}
     </div>
   </div>
 </template>
@@ -16,9 +12,7 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    deleteFavoris(index) {}
-  }
+  methods: {}
 };
 </script>
 

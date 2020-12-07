@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <favoris v-show="favorisOn" :selectedMusique="selectedMusique" />
-    <div v-for="(musique, index) in musiques" :key="index">
-      {{ musique.titre }}
-      {{ musique.son }}
-      <button v-show="musique.test" @click="getFavoris(index)">
+  <div class="mainContainer">
+    <favoris
+      v-show="favorisOn"
+      :selectedMusique="selectedMusique"
+      class="componsantFavoris"
+    />
+    <div class="mainFavoris" v-for="(musique, index) in musiques" :key="index">
+      Titre : {{ musique.titre }} Son :{{ musique.son }}
+      <button v-show="musique.afficher" @click="getFavoris(index)">
         favoris
       </button>
     </div>
@@ -25,17 +28,17 @@ export default {
         {
           titre: "cc",
           son: "tt",
-          test: "true"
+          afficher: "true"
         },
         {
           titre: "test1",
           son: "test1",
-          test: "true"
+          afficher: "true"
         },
         {
           titre: "test2",
           son: "test2",
-          test: "true"
+          afficher: "true"
         }
       ]
     };
@@ -43,12 +46,20 @@ export default {
   methods: {
     getFavoris(index) {
       this.favorisOn = true;
-      this.musiques[index].test = false;
+      this.musiques[index].afficher = false;
       this.selectedMusique.push(this.musiques[index]);
-      console.log(this.musiques[index].test);
+      console.log(this.musiques[index].afficher);
     }
   }
 };
 </script>
 
-<style></style>
+<style>
+.mainContainer {
+}
+.componsantFavoris {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+</style>
