@@ -1,72 +1,53 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        soundcloud
-      </h1>
-      <h2 class="subtitle">
-        soundcloud clone projet ebusiness
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div>
+    <favoris v-show="favorisOn" :testArray="testArray" />
+    <div v-for="(musique, index) in musiques" :key="index">
+      {{ musique.titre }}
+      {{ musique.son }}
+      <button @click="getFavoris(index)">favoris</button>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import favoris from "@/components/favoris";
 export default {
   components: {
-    Logo
+    favoris
+  },
+  data() {
+    return {
+      favorisOn: false,
+      selectedMusique: "",
+      testArray: [""],
+      musiques: [
+        {
+          titre: "cc",
+          son: "tt",
+          test: "false"
+        },
+        {
+          titre: "test1",
+          son: "test1",
+          test: "false"
+        },
+        {
+          titre: "test2",
+          son: "test2",
+          test: "false"
+        }
+      ]
+    };
+  },
+  methods: {
+    getFavoris(index) {
+      this.favorisOn = true;
+      this.selectedMusique = this.musiques[index];
+
+      this.testArray.push(this.selectedMusique);
+    }
   }
-}
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style></style>
