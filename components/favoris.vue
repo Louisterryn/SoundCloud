@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Favoris</h1>
     <div v-for="musique in selectedMusique">
       Titre : {{ musique.titre }} Son :{{ musique.son }}
     </div>

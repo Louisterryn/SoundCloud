@@ -5,7 +5,9 @@
       :selectedMusique="selectedMusique"
       class="componsantFavoris"
     />
+     <h1>Liste musique</h1>
     <div class="mainFavoris" v-for="(musique, index) in musiques" :key="index">
+     
       Titre : {{ musique.titre }} Son :{{ musique.son }}
       <button v-show="musique.afficher" @click="getFavoris(index)">
         favoris
