@@ -56,8 +56,6 @@ export default {
 </script>
 
 <style>
-.mainContainer {
-}
 .componsantFavoris {
   display: flex;
   justify-content: space-evenly;
