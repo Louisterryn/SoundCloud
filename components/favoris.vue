@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1>Favoris</h1>
     <div v-for="musique in selectedMusique">
-      Titre : {{ musique.titre }} Son :{{ musique.son }}
+      <ul>
+        <li>Titre : {{ musique.Titre }} Son :{{ musique.Artiste }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -17,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+li {
+  color: white;
+}
+</style>

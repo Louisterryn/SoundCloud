@@ -1,42 +1,53 @@
 <template>
-    <div>
-        <div class="center-block bloc">
-            <div class="surbrillance">
-                <img class="imgMusique" :src="son.Images"/>
-                <p class="artisteMusique"><i class="fa fa-heart"></i> {{son.Artiste}}</p>
-                <p class="titreMusique">{{son.Titre}}</p>
-            </div>
-        </div>
+  <div>
+    <div class="center-block bloc">
+      <div class="surbrillance">
+        <img class="imgMusique" :src="son.Images" />
+        <p class="artisteMusique">
+          <i
+            v-show="Musique.afficher"
+            class="fa fa-heart"
+            @click="getFavoris"
+          ></i>
+          {{ son.Artiste }}
+        </p>
+        <p class="titreMusique">{{ son.Titre }}</p>
+      </div>
     </div>
+  </div>
 </template>
 <script>
- export default {
-    name : "musique",
-    props : ["son"],
+export default {
+  name: "musique",
+  props: ["son", "selectedMusique"],
+  methods: {
+    getFavoris() {
+      this.$emit("event_child", 1);
+      console.log(this.selectedMusique);
+    }
   }
+};
 </script>
 <style>
-.bloc{
-    margin:50px;
-    margin-top:100px;
-    border: solid 8px #ffda43;
-    border-radius:20px;
-    padding:20px;
+.bloc {
+  margin: 50px;
+  margin-top: 100px;
+  border: solid 8px #ffda43;
+  border-radius: 20px;
+  padding: 20px;
 }
-.surbrillance:hover{
-    background-color:white;
-    opacity:0.7;
+.surbrillance:hover {
+  background-color: white;
+  opacity: 0.7;
 }
-.imgMusique{
-    width:300px;
-    height:300px;
+.imgMusique {
+  width: 300px;
+  height: 300px;
 }
-.titreMusique{
-    font-size:20px;
+.titreMusique {
+  font-size: 20px;
 }
-.artisteMusique{
-
-    font-size:30px;
-
+.artisteMusique {
+  font-size: 30px;
 }
 </style>
