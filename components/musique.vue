@@ -4,11 +4,7 @@
       <div class="surbrillance">
         <img class="imgMusique" :src="son.Images" />
         <p class="artisteMusique">
-          <i
-            v-show="Musique.afficher"
-            class="fa fa-heart"
-            @click="getFavoris"
-          ></i>
+          <i class="fa fa-heart" @click="getFavoris"></i>
           {{ son.Artiste }}
         </p>
         <p class="titreMusique">{{ son.Titre }}</p>
